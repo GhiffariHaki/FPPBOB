@@ -1,7 +1,7 @@
 package BattleArena;
 
 public class MissileP1 extends Player {
-    private final int BOARD_WIDTH = 390;
+    private final int BOARD_WIDTH = 558;
     private final int MISSILE_SPEED = 2;
 
     public MissileP1(int x, int y) {
