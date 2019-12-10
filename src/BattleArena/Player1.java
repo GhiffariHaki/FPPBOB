@@ -78,7 +78,7 @@ public class Player1 extends Player{
             dx = 0;
         }
 
-        if (key == KeyEvent.VK_S) {
+        if (key == KeyEvent.VK_D) {
             dx = 0;
         }
 
