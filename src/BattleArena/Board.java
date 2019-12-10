@@ -2,8 +2,6 @@ package BattleArena;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
@@ -11,10 +9,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+import java.awt.Image;
 
 
 public class Board extends JPanel implements ActionListener {
@@ -25,6 +23,10 @@ public class Board extends JPanel implements ActionListener {
     protected int p2life = 3;
     private boolean ingame;
     private final int DELAY = 15;
+    Image bg = Toolkit.getDefaultToolkit().createImage("src/resources/background.jpg");
+    Image w1 = Toolkit.getDefaultToolkit().createImage("src/resources/w1.jpg");
+    Image w2 = Toolkit.getDefaultToolkit().createImage("src/resources/w2.jpg");
+    
     
     public Board() {
 
@@ -38,7 +40,7 @@ public class Board extends JPanel implements ActionListener {
         setBackground(Color.BLACK);
         ingame = true;
 
-        setPreferredSize(new Dimension(500, 500));
+        setPreferredSize(new Dimension(558, 308));
 
         p1 = new Player1(100,200);
         p2 = new Player2(350,200);
@@ -50,6 +52,7 @@ public class Board extends JPanel implements ActionListener {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+        g.drawImage(bg, 0, 0, null);
 
         if (ingame) {
 
@@ -95,19 +98,17 @@ public class Board extends JPanel implements ActionListener {
 
         g.setColor(Color.WHITE);
         g.drawString("Player 1 Life Left: " + p1life, 5, 15);
-        g.drawString("Player 2 Life Left: " + p2life, 400, 15);
+        g.drawString("Player 2 Life Left: " + p2life, 450, 15);
     }
     
     private void drawGameOver(Graphics g) {
 
-        String msg = "Game Over";
-        Font small = new Font("Helvetica", Font.BOLD, 14);
-        FontMetrics fm = getFontMetrics(small);
-
-        g.setColor(Color.white);
-        g.setFont(small);
-        g.drawString(msg, (500 - fm.stringWidth(msg)) / 2,
-                500 / 2);
+        if(p1life == 0) {
+        	g.drawImage(w2, 0, 0, null);
+        }
+        if(p2life == 0) {
+        	g.drawImage(w1, 0, 0, null);
+        }
     }
     
     @Override
