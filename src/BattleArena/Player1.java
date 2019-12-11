@@ -50,19 +50,27 @@ public class Player1 extends Player{
         }
         
         if (key == KeyEvent.VK_A) {
-            dx = -1;
+        	if (x > 35){
+        		dx = -2;
+        	}
         }
 
         if (key == KeyEvent.VK_D) {
-            dx = 1;
+        	if (x < 200){
+        		dx = 2;
+        	}
         }
 
         if (key == KeyEvent.VK_W) {
-            dy = -1;
+        	if (y > 40){
+        		dy = -2;
+        	}
         }
 
         if (key == KeyEvent.VK_S) {
-            dy = 1;
+        	if (y < 230){
+        		dy = 2;
+        	}
         }
     }
 
